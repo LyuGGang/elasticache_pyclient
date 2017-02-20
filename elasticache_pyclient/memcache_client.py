@@ -8,6 +8,7 @@ from distutils.version import StrictVersion
 from hash_ring import MemcacheRing
 from elasticache_pyclient import elasticache_logger
 from elasticache_pyclient.repeat_timer import RepeatTimer
+from memcached_stats import MemcachedStats
 
 class ElasticacheInvalidTelentReplyError(Exception):
     """
@@ -106,6 +107,14 @@ class MemcacheClient():
             return ori_func(*args, **kwargs)
         tmp_func.__name__ = key
         return MethodType(tmp_func, self)
+
+    def get_keys(self):
+        res = set()
+        for server in self.cluster.servers:
+            host, port = server.split(':')
+            stats = MemcachedStats(host, port)
+            res.update(stats.keys())
+        return list(res)
 
     def _update(self):
         try:

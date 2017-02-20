@@ -1,14 +1,14 @@
 from setuptools import setup, find_packages
 
-PACKAGE = "elasticache_pyclient"
-NAME = "elasticache_pyclient"
+PACKAGE = "elasticache_pyclient_with_stats"
+NAME = "elasticache_pyclient_with_stats"
 KEYWORDS = ("aws", "ealsticache")
 VERSION = '2.0'
-DESCRIPTION = "pythone client for elasticache auto discovery"
+DESCRIPTION = "pythone client for elasticache auto discovery with getting stats function"
 LICENSE = 'LGPL'
-URL = "https://github.com/yupeng820921/elasticache_pyclient"
-AUTHOR = "yupeng"
-AUTHOR_EMAIL = "yupeng0921@gmail.com"
+URL = "https://github.com/LyuGGang/elasticache_pyclient"
+AUTHOR = "LyuGGang"
+AUTHOR_EMAIL = "me@lyuwonkyung.com"
 
 setup(
     name = NAME,
@@ -24,5 +24,5 @@ setup(
     packages = find_packages(),
     include_package_data = True,
     platforms = 'any',
-    install_requires = ['python-memcached', 'hash_ring'],
+    install_requires = ['python-memcached', 'hash_ring', 'python-memcached-stats'],
     )
